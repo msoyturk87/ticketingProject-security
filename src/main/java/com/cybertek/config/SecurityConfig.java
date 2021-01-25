@@ -8,8 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableWebSecurity // this annotation for sec
+public class SecurityConfig extends WebSecurityConfigurerAdapter {  // to use sec extend it
 
     private SecurityService securityService;
     private AuthSuccessHandler authSuccessHandler;
@@ -35,11 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/fragments/**",
                         "/assets/**",
                         "/images/**"
-                ).permitAll()
+                ).permitAll()   // it means we don't need auth for this page even guest user can see
                 .and()
                 .formLogin()
                     .loginPage("/login")
-//                    .defaultSuccessUrl("/welcome")
+                // .defaultSuccessUrl("/welcome")
                     .successHandler(authSuccessHandler)
                     .failureUrl("/login?error=true")
                     .permitAll()
