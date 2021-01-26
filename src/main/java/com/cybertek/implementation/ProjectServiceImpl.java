@@ -87,6 +87,7 @@ public class ProjectServiceImpl implements ProjectService {
     public List<ProjectDTO> listAllProjectDetails() {
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        // This is for security part
         UserDTO currentUserDTO = userService.findByUserName(username);
         User user = userMapper.convertToEntity(currentUserDTO);
         List<Project> list = projectRepository.findAllByAssignedManager(user);
