@@ -26,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {  // to use se
         http
                 .authorizeRequests()
                 .antMatchers("/user/**").hasAuthority("Admin")
+                // this part limit the page but we can see related pages in html.
+                // To hide this pages in Html we should add some isAuth in HTML part
                 .antMatchers("/project/**").hasAuthority("Manager")
                 .antMatchers("/task/employee/**").hasAuthority("Employee")
                 .antMatchers("/task/**").hasAuthority("Manager")
