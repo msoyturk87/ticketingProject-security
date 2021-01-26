@@ -141,6 +141,8 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<TaskDTO> listAllTasksByStatus(Status status) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        //This is for security part
+
         User user = userRepository.findByUserName(username);
         List<Task> list = taskRepository.findAllByTaskStatusAndAssignedEmployee(status,user);
         return list.stream().map(taskMapper::convertToDto).collect(Collectors.toList());
